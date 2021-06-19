@@ -128,10 +128,13 @@ class WeatherFragment : Fragment() {
         imgProgressBar!!.visibility = View.VISIBLE
         val callBack = CallBack { palette ->
             if (palette != null) {
+
                 activity?.runOnUiThread {
-                    iMainColor =
-                        palette.getDominantColor(resources.getColor(R.color.black))
-                    main_card!!.setCardBackgroundColor(iMainColor)
+                    if(isAdded){
+                        iMainColor =
+                            palette.getDominantColor(resources.getColor(R.color.black))
+                        main_card!!.setCardBackgroundColor(iMainColor)
+                    }
                 }
             }
         }
