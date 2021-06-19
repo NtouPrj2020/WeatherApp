@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +50,7 @@ class WeatherFragment : Fragment() {
     private var tv_date: TextView? = null
     private var main_nested: View? = null
     private var main_card: CardView? = null
+    private var coor_view:CoordinatorLayout? = null
 
     private var spinner_city: Spinner? = null
 
@@ -88,7 +90,7 @@ class WeatherFragment : Fragment() {
         main_nested?.setVisibility(View.GONE)
         main_card = view?.findViewById(R.id.main_card)
         spinner_city = view?.findViewById(R.id.spinner_city)
-
+        coor_view= view?.findViewById(R.id.coor_view)
 
         val spinnerArray = mutableListOf<String>()
         for (i in CityItem.cityList) {
@@ -167,13 +169,16 @@ class WeatherFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(CWTService::class.java)
+
         service.F_D0047_091(
             BuildConfig.CWT_SECRET,
             "JSON",
             name,
             time).enqueue(object : retrofit2.Callback<WeatherBean>{
             override fun onFailure(call: retrofit2.Call<WeatherBean>, t: Throwable) {
-                Snackbar.make(view!!, "讀取資料失敗", Snackbar.LENGTH_SHORT).show()
+                if(coor_view!=null){
+                    Utility.makeAnchorSnackbar(coor_view!!,"讀取資料失敗",R.id.spinner_city)
+                }
             }
 
             override fun onResponse(
@@ -186,13 +191,41 @@ class WeatherFragment : Fragment() {
                             activity!!.runOnUiThread {
                                 progressBar?.visibility = View.GONE
                                 initLayout(response.body()!!)
+                            }
+                        }
+
+                    }
+                } else{
+                    if(coor_view!=null){
+                        Utility.makeAnchorSnackbar(coor_view!!,"讀取資料失敗",R.id.spinner_city)
+                    }
+                }
+            }
+
+        })
+
+        service.F_D0047_091(
+            BuildConfig.CWT_SECRET,
+            "JSON",
+            name,
+            null).enqueue(object : retrofit2.Callback<WeatherBean>{
+            override fun onFailure(call: retrofit2.Call<WeatherBean>, t: Throwable) {
+            }
+
+            override fun onResponse(
+                call: retrofit2.Call<WeatherBean>,
+                response: retrofit2.Response<WeatherBean>
+            ) {
+                if (response.isSuccessful) {
+                    if(response.body() != null){
+                        if(isAdded){
+                            activity!!.runOnUiThread {
                                 initHead(WeatherUtil.getFirstWeather(response.body()!!))
                             }
                         }
 
                     }
                 } else{
-                    Snackbar.make(view!!, "讀取資料失敗", Snackbar.LENGTH_SHORT).show()
                 }
             }
 

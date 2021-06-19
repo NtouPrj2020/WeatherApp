@@ -16,5 +16,6 @@
     <color name="colorWhiteTran">#BBFFFFFF</color>
     <color name="colorgray">#545454</color>
     <color name="colorlightgray">#a0a0a0</color>
+    <color name="colorlightgrayTran">#BBa0a0a0</color>
 
 </resources>

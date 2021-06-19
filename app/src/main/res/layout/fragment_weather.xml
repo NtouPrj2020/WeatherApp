@@ -1,231 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coor_view"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent">
 
-    <ProgressBar
-        android:layout_centerInParent="true"
-        android:id="@+id/view_city_progressBar"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/purple_200"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="100dp"
-        android:layout_height="20dp" />
-
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/main_nested"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/main_card"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
+        <ProgressBar
+            android:id="@+id/view_city_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/purple_200" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/main_nested"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardBackgroundColor="@color/black"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="3dp">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/main_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="0dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ProgressBar
-                                android:visibility="invisible"
-                                android:layout_centerInParent="true"
-                                android:id="@+id/city_progressBar"
-                                android:indeterminate="true"
-                                android:indeterminateTint="@color/purple_200"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="120dp"
-                                android:layout_height="20dp" />
-
-                            <ImageView
-                                android:src="@color/black"
-                                android:id="@+id/city_image"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop" />
-
-                            <androidx.cardview.widget.CardView
-                                app:cardCornerRadius="8dp"
-                                app:cardElevation="0dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_above="@id/weather_city_card"
-                                android:layout_alignParentRight="true"
-                                android:id="@+id/weather_date_card"
-                                app:cardBackgroundColor="@color/colorWhiteTran"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:id="@+id/weather_date"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_above="@+id/weather_city"
-                                    android:padding="5dp"
-                                    android:singleLine="true"
-                                    android:textColor="@color/black"
-                                    android:textSize="15sp" />
-
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                app:cardCornerRadius="8dp"
-                                app:cardElevation="0dp"
-                                android:layout_margin="10dp"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentLeft="true"
-                                android:id="@+id/weather_status_card"
-                                app:cardBackgroundColor="@color/colorWhiteTran"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <ImageView
-                                    android:id="@+id/status_first"
-                                    android:padding="20dp"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"/>
-
-                            </androidx.cardview.widget.CardView>
-
-
-                            <androidx.cardview.widget.CardView
-                                app:cardCornerRadius="8dp"
-                                app:cardElevation="0dp"
-                                android:layout_margin="10dp"
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentEnd="true"
-                                android:id="@+id/weather_city_card"
-                                app:cardBackgroundColor="@color/colorWhiteTran"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:id="@+id/weather_city"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_centerVertical="true"
-                                    android:padding="5dp"
-                                    android:singleLine="true"
-                                    android:textColor="@color/black"
-                                    android:textSize="24sp" />
-
-                            </androidx.cardview.widget.CardView>
-
-
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:text="目前溫度"
-                            android:layout_alignParentRight="true"
-                            android:layout_above="@id/weather_title"
-                            android:gravity="right"
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="15sp" />
+                            android:layout_height="200dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
 
-                        <RelativeLayout
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ProgressBar
+                                    android:id="@+id/city_progressBar"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="120dp"
+                                    android:layout_height="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:indeterminate="true"
+                                    android:indeterminateTint="@color/purple_200"
+                                    android:visibility="invisible" />
+
+                                <ImageView
+                                    android:id="@+id/city_image"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@color/black" />
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/weather_date_card"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_above="@id/weather_city_card"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="10dp"
+                                    app:cardBackgroundColor="@color/colorWhiteTran"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="0dp">
+
+                                    <TextView
+                                        android:id="@+id/weather_date"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_above="@+id/weather_city"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/weather_status_card"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_margin="10dp"
+                                    app:cardBackgroundColor="@color/colorWhiteTran"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="0dp">
+
+                                    <ImageView
+                                        android:id="@+id/status_first"
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:padding="20dp" />
+
+                                </androidx.cardview.widget.CardView>
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/weather_city_card"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_margin="10dp"
+                                    app:cardBackgroundColor="@color/colorWhiteTran"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="0dp">
+
+                                    <TextView
+                                        android:id="@+id/weather_city"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_centerVertical="true"
+                                        android:padding="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textSize="24sp" />
+
+                                </androidx.cardview.widget.CardView>
+
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentLeft="true"
-                                android:id="@+id/weather_status"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:lineSpacingExtra="8dp"
+                                android:layout_above="@id/weather_title"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:text="目前溫度"
                                 android:textColor="@color/white"
                                 android:textSize="15sp" />
 
-                            <TextView
-                                android:layout_alignParentBottom="true"
-                                android:layout_alignParentRight="true"
-                                android:gravity="right"
-                                android:id="@+id/weather_title"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:singleLine="true"
-                                android:textColor="@color/white"
-                                android:textSize="28sp" />
+                                android:orientation="vertical">
 
-                        </RelativeLayout>
+                                <TextView
+                                    android:id="@+id/weather_status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:lineSpacingExtra="8dp"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/weather_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="right"
+                                    android:singleLine="true"
+                                    android:textColor="@color/white"
+                                    android:textSize="28sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+
                     </LinearLayout>
 
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="50dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
-                </LinearLayout>
+        <LinearLayout
 
-            </com.google.android.material.card.MaterialCardView>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorlightgrayTran">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:overScrollMode="never"
-                android:clipToPadding = "false"
-                android:paddingTop="10dp"
-                android:paddingBottom="50dp"
-                android:id="@+id/rv_weather"
+            <Spinner
+                android:id="@+id/spinner_city"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
-
-
-    <LinearLayout
-        android:background="@color/black2"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Spinner
-            android:id="@+id/spinner_city"
-            android:spinnerMode="dropdown"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
