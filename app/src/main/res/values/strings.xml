@@ -5,6 +5,8 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="title_home">天氣小幫手</string>
     <string name="title_info">資訊</string>
+    <string name="title_notification">天氣提醒</string>
+    <string name="sunday">星期日</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

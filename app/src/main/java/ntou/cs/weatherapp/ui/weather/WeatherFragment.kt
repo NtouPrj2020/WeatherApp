@@ -19,7 +19,6 @@ import com.bumptech.glide.signature.ObjectKey
 import com.github.florent37.glidepalette.BitmapPalette
 import com.github.florent37.glidepalette.BitmapPalette.CallBack
 import com.github.florent37.glidepalette.GlidePalette
-import com.google.android.material.snackbar.Snackbar
 import ntou.cs.weatherapp.BuildConfig
 import ntou.cs.weatherapp.R
 import ntou.cs.weatherapp.bean.WeatherBean
@@ -103,7 +102,7 @@ class WeatherFragment : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_city?.adapter = adapter
         for(i in 0 until CityItem.cityList.size){
-            if(CityItem.cityList[i].key == AppPreference.getCity(requireActivity())!!){
+            if(CityItem.cityList[i].key == AppPreference.getCity(requireContext())!!){
                 spinner_city?.setSelection(i)
             }
         }

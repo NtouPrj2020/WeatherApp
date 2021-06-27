@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_weather" />
 
     <fragment
+        android:id="@+id/navigation_notification"
+        android:name="ntou.cs.weatherapp.ui.notification.NotificationFragment"
+        android:label="@string/title_notification"
+        tools:layout="@layout/fragment_notification" />
+
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="ntou.cs.weatherapp.ui.dashboard.DashboardFragment"
         android:label="@string/title_info"
